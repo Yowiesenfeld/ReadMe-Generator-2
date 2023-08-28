@@ -1,4 +1,4 @@
-script
+
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs').promises;
@@ -38,7 +38,7 @@ const questions = [
     {
         type: 'input',
         name: 'features',
-        message:'List features:',
+        message: 'List features:',
     },
     {
         type: 'input',
@@ -52,7 +52,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'issues', 
+        name: 'issues',
         message: 'Enter report issue instructions:',
     },
     {
@@ -76,22 +76,24 @@ const questions = [
 
 // this function creates a readme based on users input
 function generateReadmeContent(answers) {
-    
     return `
-  
   # ${answers.title}
   
   ## Description
   ${answers.description}
-  
+  -[Motivation](#motivation)
+  -[Learned](#learned)  
+
   ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
+  -[Features](#features)
   - [License](#license)
   - [Contributing](#contributing)
   - [Tests](#tests)
+  - [Issues](#issues)
   - [Questions](#questions)
-  
+
   ## Installation
   ${answers.installation}
   
@@ -111,29 +113,43 @@ function generateReadmeContent(answers) {
   For additional questions, you can reach me at:
   GitHub: [${answers.githubUsername}](https://github.com/${answers.githubUsername})
   Email: ${answers.email}
-      `;
-
+    `;
+}
 // Heres a function that writes the README file
 
-function writeToFile(fileName, data, imagePath) {
-    writeFile(path.join(__dirname, '/Example/', fileName), data).then(() => {
-        console.log("Success");
-        if (imagePath) {
-            const imageFileName = path.basename(imagePath);
-            const targetImagePath = path.join(__dirname, '/Example/', imageFileName);
-            fs.copyFileSync(imagePath, targetImagePath);
-            console.log("Image copied successfully.");
-        }
-    }).catch(err => console.log("Fail", err));
+async function writeToFile(fileName, data) {
+    const filePath = path.join(__dirname, 'Example', fileName);
+    try {
+        await fs.writeFile(filePath, data);
+        console.log('success!');
+    } catch (error) {
+        console.error('Error writing file:', error);
+    }
 }
 
-// Created a function to initialize app
-function init() {
-    inquirer.prompt(questions).then((answers) => {
+async function copyImage(sourceImagePath, targetDirectory) {
+    const sourceImageName = path.basename(sourceImagePath);
+    const targetImagePath = path.join(targetDirectory, sourceImageName);
+    try {
+        await fs.copyFile(sourceImagePath, targetImagePath);
+        console.log('Image copied successfully:', targetImagePath);
+    } catch (error) {
+        console.error('Error copying image:', error);
+    }
+}
+
+async function init() {
+    try {
+        const answers = await inquirer.prompt(questions);
         const readmeContent = generateReadmeContent(answers);
-        writeToFile('README.md', readmeContent, answers.image);
-    });
+        await writeToFile('README.md', readmeContent);
+
+        if (answers.image) {
+            await copyImage(answers.image, path.join(__dirname, 'Example'));
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
 
-// call to initialize app
-init();}
+init();
