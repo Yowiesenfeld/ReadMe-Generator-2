@@ -1,9 +1,8 @@
+script
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const fs = require('fs');
-const util = require('util');
-const writeFile = util.promisify (fs.writeFile)
-const path = require('path')
+const fs = require('fs').promises;
+const path = require('path');
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -18,15 +17,13 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'motivation', 
-        message: "Enter motivation for creating your project: (optional):",
-        when: (answers) => answers.description,
+        name: 'motivation',
+        message: 'Enter motivation for creating your project:',
     },
     {
         type: 'input',
-        name: 'learned', 
-        message: 'Enter what you have learned while creating this project: (optional):',
-        when: (answers) => answers.description,
+        name: 'learned',
+        message: 'Enter what you have learned while creating this project:',
     },
     {
         type: 'input',
@@ -79,18 +76,10 @@ const questions = [
 
 // this function creates a readme based on users input
 function generateReadmeContent(answers) {
-    let description = answers.description;
-    if (answers.motivation) {
-        description += `\n\n**Motivation**: ${answers.motivation}`;
-    }
-    if (answers.learned) {
-        description += `\n\n**What I've Learned**: ${answers.learned}`;
-    }
     
     return `
   
-  # Title
-  ${answers.title}
+  # ${answers.title}
   
   ## Description
   ${answers.description}
@@ -123,7 +112,6 @@ function generateReadmeContent(answers) {
   GitHub: [${answers.githubUsername}](https://github.com/${answers.githubUsername})
   Email: ${answers.email}
       `;
-}
 
 // Heres a function that writes the README file
 
@@ -148,4 +136,4 @@ function init() {
 }
 
 // call to initialize app
-init();
+init();}
