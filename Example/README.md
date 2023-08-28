@@ -1,8 +1,8 @@
 
-  # a
+  # g
   
   ## Description
-  s
+  
   
   ## Table of Contents
   - [Installation](#installation)
@@ -13,22 +13,22 @@
   - [Questions](#questions)
   
   ## Installation
-  d
+  c
   
   ## Usage
-  f
+  
   
   ## License
-  This project is covered under the Apache license.
+  This project is covered under the MIT license.
   
   ## Contributing
-  g
+  
   
   ## Tests
-  h
+  
   
   ## Questions
   For additional questions, you can reach me at:
-  GitHub: [j](https://github.com/j)
-  Email: k
+  GitHub: [](https://github.com/)
+  Email: 
       

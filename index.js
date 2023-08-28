@@ -15,6 +15,7 @@ const questions = [
         type: 'input',
         name: 'description',
         message: 'Enter the project description:',
+        // message: 'Enter your motivation:',
     },
     {
         type: 'input',
@@ -35,6 +36,11 @@ const questions = [
         type: 'input',
         name: 'tests',
         message: 'Enter test instructions:',
+    },
+    {
+        type: 'input',
+        name: 'issues', 
+        message: 'Enter report issue instructions:',
     },
     {
         type: 'list',
