@@ -15,7 +15,16 @@ const questions = [
         type: 'input',
         name: 'description',
         message: 'Enter the project description:',
-        // message: 'Enter your motivation:',
+    },
+    {
+        type: 'input',
+        name: 'motivation',
+        message: 'Enter your motivation for this project',
+    },
+    {
+        type: 'input',
+        name: 'learned',
+        message: 'Enter what you learned while creating this project:',
     },
     {
         type: 'input',
@@ -26,6 +35,11 @@ const questions = [
         type: 'input',
         name: 'usage',
         message: 'Enter usage information:',
+    },
+    {
+        type: 'input',
+        name: 'features',
+        message:'List features:',
     },
     {
         type: 'input',
