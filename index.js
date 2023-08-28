@@ -18,13 +18,15 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'motivation',
-        message: 'Enter your motivation for this project',
+        name: 'motivation', 
+        message: "Enter motivation for creating your project: (optional):",
+        when: (answers) => answers.description,
     },
     {
         type: 'input',
-        name: 'learned',
-        message: 'Enter what you learned while creating this project:',
+        name: 'learned', 
+        message: 'Enter what you have learned while creating this project: (optional):',
+        when: (answers) => answers.description,
     },
     {
         type: 'input',
@@ -77,8 +79,18 @@ const questions = [
 
 // this function creates a readme based on users input
 function generateReadmeContent(answers) {
+    let description = answers.description;
+    if (answers.motivation) {
+        description += `\n\n**Motivation**: ${answers.motivation}`;
+    }
+    if (answers.learned) {
+        description += `\n\n**What I've Learned**: ${answers.learned}`;
+    }
+    
     return `
-  # ${answers.title}
+  
+  # Title
+  ${answers.title}
   
   ## Description
   ${answers.description}
@@ -114,15 +126,24 @@ function generateReadmeContent(answers) {
 }
 
 // Heres a function that writes the README file
-function writeToFile(fileName, data) {
-    writeFile(path.join(__dirname,'/Example/', fileName), data).then( () =>console.log ("Success")).catch(err => console.log ("fail"))
+
+function writeToFile(fileName, data, imagePath) {
+    writeFile(path.join(__dirname, '/Example/', fileName), data).then(() => {
+        console.log("Success");
+        if (imagePath) {
+            const imageFileName = path.basename(imagePath);
+            const targetImagePath = path.join(__dirname, '/Example/', imageFileName);
+            fs.copyFileSync(imagePath, targetImagePath);
+            console.log("Image copied successfully.");
+        }
+    }).catch(err => console.log("Fail", err));
 }
 
 // Created a function to initialize app
 function init() {
     inquirer.prompt(questions).then((answers) => {
         const readmeContent = generateReadmeContent(answers);
-        writeToFile('README.md', readmeContent);
+        writeToFile('README.md', readmeContent, answers.image);
     });
 }
 
