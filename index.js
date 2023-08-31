@@ -99,12 +99,12 @@ function generateReadmeContent(answers) {
 
   ## Features
   ${answers.features}
-  
-  ## License
-  This project is covered under the ${answers.license} license.
-  
+   
   ## Contributing
   ${answers.contribution}
+
+  ## License
+  This project is covered under the ${answers.license} license.
   
   ## Tests
   ${answers.tests}
