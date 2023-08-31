@@ -22,11 +22,6 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'learned',
-        message: 'Enter what you have learned while creating this project:',
-    },
-    {
-        type: 'input',
         name: 'installation',
         message: 'Enter installation instructions:',
     },
@@ -80,14 +75,16 @@ function generateReadmeContent(answers) {
   # ${answers.title}
   
   ## Description
-  ${answers.description}
-  -[Motivation](#motivation)
-  -[Learned](#learned)  
+  ${answers.description} 
+
+  ## Motivation
+  ${answers.motivation}
+
 
   ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
-  -[Features](#features)
+  - [Features](#features)
   - [License](#license)
   - [Contributing](#contributing)
   - [Tests](#tests)
@@ -99,6 +96,9 @@ function generateReadmeContent(answers) {
   
   ## Usage
   ${answers.usage}
+
+  ## Features
+  ${answers.features}
   
   ## License
   This project is covered under the ${answers.license} license.
@@ -108,6 +108,9 @@ function generateReadmeContent(answers) {
   
   ## Tests
   ${answers.tests}
+
+  ## Issues
+  ${answers.issues}
   
   ## Questions
   For additional questions, you can reach me at:

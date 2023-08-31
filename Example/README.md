@@ -1,15 +1,19 @@
 
-  # 
+  # Giggles
   
   ## Description
+  j 
+
+  ## Motivation
+  gk
   
-  -[Motivation](#motivation)
-  -[Learned](#learned)  
+  ## Learned
+  gse
 
   ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
-  -[Features](#features)
+  - [Features](#features)
   - [License](#license)
   - [Contributing](#contributing)
   - [Tests](#tests)
@@ -17,22 +21,28 @@
   - [Questions](#questions)
 
   ## Installation
-  
+  sf
   
   ## Usage
-  
+  sfe
+
+  ## Features
+  gfrg
   
   ## License
   This project is covered under the MIT license.
   
   ## Contributing
-  
+  rf
   
   ## Tests
-  
+  g
+
+  ## Issues
+  rger
   
   ## Questions
   For additional questions, you can reach me at:
-  GitHub: [](https://github.com/)
-  Email: 
+  GitHub: [df](https://github.com/df)
+  Email: df
     
