@@ -2,6 +2,10 @@ Hi! I made this code to help users create ReadMe files for their websites.
 It can be really annoying to have to write a ReadMe everytime you make an app. 
 This makes it easy. All you have to do is input your information and the code will generate a ReadMe file for you. 
 This will save you time and energy so that you'll be able to spend more time perfecting your app.
+(I used AI to come up with an app to use for the example ReadME)
+
+Heres my video:
+https://drive.google.com/file/d/186aKNPGn4bUlXagw3xQIOiF1danedwII/view
 
 Here are my screenshots:
 ![Screenshot 2023-08-31 152913](https://github.com/Yowiesenfeld/ReadMe-Generator-2/assets/136192424/39a36333-574c-4600-98d4-03edec9674f6)
